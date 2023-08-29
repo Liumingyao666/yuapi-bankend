@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yupi</groupId>
-    <artifactId>springboot-init</artifactId>
+    <artifactId>yuapi-bankend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-init</name>
-    <description>springboot 初始项目</description>
+    <name>yuapi-bankend</name>
+    <description>在线API</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
