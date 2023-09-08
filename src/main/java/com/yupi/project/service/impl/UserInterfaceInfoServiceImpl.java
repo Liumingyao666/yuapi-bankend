@@ -1,5 +1,6 @@
 package com.yupi.project.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yupi.project.common.ErrorCode;
 import com.yupi.project.exception.BusinessException;
@@ -32,6 +33,23 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         if (userInterfaceInfo.getLeftNum() < 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "剩余次数不能小于0");
         }
+    }
+
+    @Override
+    public boolean invokeCount(long userId, long interfaceInfoId) {
+
+        if (userId <= 0 || interfaceInfoId <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户接口不存咋");
+        }
+
+        UpdateWrapper<UserInterfaceInfo> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("userId", userId);
+        updateWrapper.eq("interfaceInfoId", interfaceInfoId);
+        updateWrapper.gt("leftNum", 0);
+        updateWrapper.setSql("leftNum = leftNum - 1 , totalNum = totalNum + 1");
+
+        return this.update(updateWrapper);
+
     }
 }
 
