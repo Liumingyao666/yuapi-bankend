@@ -20,18 +20,16 @@ public class InnerUserServiceImpl implements InnerUserService {
     /**
      * 数据中是否已给用户分配密匙
      * @param accessKey
-     * @param secretKey
      * @return
      */
     @Override
-    public User getInvokeUser(String accessKey, String secretKey) {
-        if (StringUtils.isAnyBlank(accessKey, secretKey)) {
+    public User getInvokeUser(String accessKey) {
+        if (StringUtils.isAnyBlank(accessKey)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("accessKey", accessKey);
-        queryWrapper.eq("secretKey", secretKey);
         User user = userMapper.selectOne(queryWrapper);
         return user;
     }

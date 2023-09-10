@@ -28,26 +28,26 @@ public class NameController {
     @PostMapping("/user")
     public String getUsernameByPost(@RequestBody User user, HttpServletRequest request){
         //@todo 实际上是从数据库中查出来是否已分配给用户
-        String accessKey = request.getHeader("accessKey");
-        String nonce = request.getHeader("nonce");
-        String body = request.getHeader("body");
-        String sign = request.getHeader("sign");
-        String timestamp = request.getHeader("timestamp");
+//        String accessKey = request.getHeader("accessKey");
+//        String nonce = request.getHeader("nonce");
+//        String body = request.getHeader("body");
+//        String sign = request.getHeader("sign");
+//        String timestamp = request.getHeader("timestamp");
 //        String secretKey = request.getHeader("secretKey");
 
-        if (!accessKey.equals("yupi")) {
-            throw new RuntimeException("无权限");
-        }
-
-        if (Long.parseLong(nonce) > 10000) {
-            throw new RuntimeException("无权限");
-        }
-
-        //@todo 实际上是从数据库中查出secret
-        String serverSign = SignUtils.getSign(body, "qwer");
-        if (!sign.equals(serverSign)){
-            throw new RuntimeException("无权限");
-        }
+//        if (!accessKey.equals("yupi")) {
+//            throw new RuntimeException("无权限");
+//        }
+//
+//        if (Long.parseLong(nonce) > 10000) {
+//            throw new RuntimeException("无权限");
+//        }
+//
+//        //@todo 实际上是从数据库中查出secret
+//        String serverSign = SignUtils.getSign(body, "qwer");
+//        if (!sign.equals(serverSign)){
+//            throw new RuntimeException("无权限");
+//        }
         return "POST 你的名字是" + user.getUsername();
     }
 

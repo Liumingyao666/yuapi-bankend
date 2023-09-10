@@ -2,7 +2,7 @@
 
 ## 模板功能
 
-- Spring Boot 2.7.0（贼新）
+- Spring Boot 2.7.0
 - Spring MVC
 - MySQL 驱动
 - MyBatis
